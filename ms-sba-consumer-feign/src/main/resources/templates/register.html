@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign Up</title>
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}" rel="stylesheet">
+    <link href="asserts/css/signup.css" th:href="@{asserts/css/signup.css}" rel="stylesheet">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+</head>
+
+<body class="text-center">
+<form class="form-signup" th:action="@{/signup}" th:method="post">
+    <h1 class="mb-3 font-weight-normal"><strong>Sign Up</strong></h1>
+    <br/>
+
+    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
+    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email Address" required="">
+    <input type="text" id="inputMobileNumber" name="mobileNumber" class="form-control" placeholder="Mobile Number">
+
+    <p class="error-message conflicted-username" style="font-size: 12px; color: red; display: none;">Conflicted, username had been registered.</p>
+    <p class="error-message conflicted-email" style="font-size: 12px; color: red; display: none;">Conflicted, email address had been registered.</p>
+
+    <br/>
+    <button class="btn btn-lg btn-primary btn-block btn-sign-up" type="button">Sign up</button>
+</form>
+</body>
+</html>
+
+<script>
+    $(function () {
+
+        $('.btn-sign-up').on('click', function (event) {
+            $('.error-message').hide();
+
+            $.ajax({
+                method: 'post',
+                url: '/signup',
+                data: $('.form-signup').serialize(),
+                success: function (resultMap) {
+                    if (resultMap.code == '0000') {
+                        alert('Sign up successfully! will direct to sign in page in 2 second.');
+                        setTimeout(function () {
+                            $(location).prop('href', resultMap.viewName);
+                        }, 2000);
+                    }
+                    if (resultMap.code == 'E002') {
+                        $('.conflicted-username').show();
+                        return;
+                    }
+                    if (resultMap.code == 'E003') {
+                        $('.conflicted-email').show();
+                        return;
+                    }
+                }
+            });
+        });
+
+    });
+</script>

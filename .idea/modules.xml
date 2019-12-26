@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ms-sba.iml" filepath="$PROJECT_DIR$/.idea/ms-sba.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-sba-consumer-feign/ms-sba-consumer-feign.iml" filepath="$PROJECT_DIR$/ms-sba-consumer-feign/ms-sba-consumer-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-sba-eureka-server/ms-sba-eureka-server.iml" filepath="$PROJECT_DIR$/ms-sba-eureka-server/ms-sba-eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ms-sba-provider-user/ms-sba-provider-user.iml" filepath="$PROJECT_DIR$/ms-sba-provider-user/ms-sba-provider-user.iml" />
+    </modules>
+  </component>
+</project>

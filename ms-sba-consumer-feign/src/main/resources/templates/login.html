@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign In</title>
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}" rel="stylesheet">
+    <link href="asserts/css/signin.css" th:href="@{asserts/css/signin.css}" rel="stylesheet">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+</head>
+
+<body class="text-center">
+<form class="form-signin" th:action="@{/dashboard}" th:method="post">
+    <h1 class="mb-3 font-weight-normal"><strong>Stock Market</strong></h1>
+    <br/>
+
+    <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
+    <p style="font-size: 12px; color: red;" th:if="${errorCode} eq 'E001'">Unauthorized, please check the username or password.</p>
+
+    <br/>
+    <div>
+       <span style="width: 45%; float: left;">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </span>
+        <span style="width: 45%; float: right">
+            <button class="btn btn-lg btn-primary btn-block btn-sign-up" type="button">Sign up</button>
+        </span>
+    </div>
+</form>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $('.btn-sign-up').on('click', function () {
+            $(location).prop('href', 'register');
+        });
+    });
+</script>
